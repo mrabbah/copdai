@@ -1,0 +1,93 @@
+syntax = "proto2";
+
+package org.copdai.core.model;
+
+/* Geolocation Hitory */
+message GeolocationHistory {
+	repeated Geolocation geolocations = 1;	// List of Geolocation
+	required double sentTime = 13; // Time the message was sent
+	required double startTime = 14; // History start time
+	required double endTime = 15; // History end time
+}
+
+/* Gelocation taked in specific time */
+message Geolocation {
+    required double lat = 1; // latitude
+    required double lng = 2; // longitude
+    optional double alt = 3; // altitude
+    optional double accuracy = 4; // accuracy in meter
+    optional double speed = 5; // speed in meter/second
+    required double time = 15; // Time whene the event occured
+}
+
+/* AngularAccelerationHistory history of acceleration between two times */
+message AngularAccelerationHistory {
+    repeated AngularAcceleration angularAccelerations = 1; // List of angualr acceleration between two times
+    required double sentTime = 13; // Time the message was sent
+    required double startTime = 14; // History start time
+    required double endTime = 15; // History end time
+}
+
+/* Angular acceleration in a given time */
+message AngularAcceleration {
+    required double x = 1; // Angular acceleration x axe in radian/second
+    required double y = 2; // Angular acceleration y axe in radian/second
+    required double z = 3; // Angular acceleration z axe in radian/second
+    required double time = 15; // Time whene the event occured
+}
+
+/* Linear Acceleration History between two times */
+message LinearAccelerationHistory {
+    repeated LinearAcceleration linearAccelerations = 1; // Set of linear acceleartion
+    required double sentTime = 13; // Time the message was sent
+    required double startTime = 14; // History start time
+    required double endTime = 15; // History end time
+}
+
+/* Linear acceleration taken in specific time */
+message LinearAcceleration {
+    required double x = 1; // Linear acceleration x axe in m/s^2
+    required double y = 2; // Linear acceleration x axe in m/s^2
+    required double z = 3; // Linear acceleration x axe in m/s^2
+    required double time = 15; // Time whene the event occured
+}
+
+/* Orientation history between two times */
+message OrientationHistory {
+    repeated Orientation orientations = 1;  // Set of Orientation
+    required double sentTime = 13; // Time the message was sent
+    required double startTime = 14; // History start time
+    required double endTime = 15; // History end time
+}
+
+/* Orientation taken in specific time */
+message Orientation {
+    required double azimuth = 1; // azimuth in radian
+    required double pitch = 2; // pitch in radian
+    required double roll = 3; // roll in radian
+    required double time = 15; // Time whene the event occured
+}
+
+/* History of objects detected in picture */
+message PictureDetectedObjectsHistory {
+    repeated PictureDetectedObjects picturesDetectedObjects = 1; // List of detected objects for a set of pictures  
+    required double sentTime = 13; // Time the message was sent
+    required double startTime = 14; // History start time
+    required double endTime = 15; // History end time
+}
+
+/* Detected objects in a picture taken in specific time */
+message PictureDetectedObjects {
+    repeated PictureDetectedObject pictureDetectedObjects = 1; // Detected Objects
+    required double time = 15; // Time whene picture was taken
+}
+
+/* Detecte object in a picture */
+message PictureDetectedObject {
+    required double x1 = 1; // X coordinate of the top left rectangle
+    required double y1 = 2; // Y coordinate of the top left rectangle
+    required double x2 = 3; // X coordinate of the lower right rectangle
+    required double y2 = 4; // Y coordinate of the lower right rectangle
+    optional string label = 5; // Object label
+    optional double confidence = 6; // confidence of the label
+}
