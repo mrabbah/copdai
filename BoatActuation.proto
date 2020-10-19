@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package org.copdai.core.model;
+
+/* Boat Model N°1 (one motor one rudder) Commands history between two times */
+message BoatModel1CommandHistory {
+	repeated BoatModel1Command commands = 1;	// Set of BoatModel1Command
+	required double sentTime = 13; // Time the message was sent
+	required double startTime = 14; // History start time
+	required double endTime = 15; // History end time
+}
+
+/* Command to send to a Boat Model N°1 (one motor one rudder) in specific time */
+message BoatModel1Command {
+	required double motorPower = 1; // the power given to the motor between -100% and 100% 
+	required double torque = 2; // the torque givent th rudder between -100% and 100%
+	required double time = 15; // Time whene the event occured
+}

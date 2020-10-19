@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package org.copdai.core.model;
+
+/* AngularAccelerationHistory history of acceleration between two times */
+message AngularAccelerationHistory {
+	repeated AngularAcceleration angularAccelerations = 1; // List of angualr acceleration between two times
+	required double sentTime = 13; // Time the message was sent
+	required double startTime = 14; // History start time
+	required double endTime = 15; // History end time
+}
+
+/* Angular acceleration in a given time */
+message AngularAcceleration {
+	required double x = 1; // Angular acceleration x axe in radian/second
+	required double y = 2; // Angular acceleration y axe in radian/second
+	required double z = 3; // Angular acceleration z axe in radian/second
+	required double time = 15; // Time whene the event occured
+}

@@ -1,0 +1,41 @@
+syntax = "proto2";
+
+package org.copdai.core.model;
+
+/* Agents Directory */
+message WhitePages {
+	repeated WhitePageEntry entries = 2; // The Directory entries
+	required double lastUpdate = 15; // last time the directory where updated
+}
+
+
+/* Entry in an Agent Directory */
+message WhitePageEntry {
+	required string aid = 1; // the agent identifier
+	repeated string addresses = 2; // Agent's Transport addresses
+	required double time = 15; // Time whene the entry was generated
+}
+
+/* Pattern to call / consume the service */
+enum ServiceConsumptionPattern {
+	REQUEST_REPLAY = 0;
+	PUBLISH_SUBSCRIBE = 1;
+	PUSH_PULL = 2;
+	EXCLUSIVE_PAIR = 3;
+}
+
+/* Service provided by the agent */
+message AgentService {
+	required string aid = 1; // the agent identifier
+	required string name = 2; // name of the service
+	optional string type = 3; // service type
+	optional string inputType = 4; // input type (simple or complexe) (for serialization and deserialization)
+	optional string outputTye = 5; // output type (simple or complexe) (for serialization and deserialization)
+	required ServiceConsumptionPattern pattern = 8; // Pattern to call or consome the service
+}
+
+/* Agents Directory */
+message YellowPages {
+	repeated AgentService agentServices = 1; // The directory entries 
+	required double lastUpdate = 15; // last time the directory where updated
+}

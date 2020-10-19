@@ -1,2 +1,2 @@
-# COPDAI
-Collaborative Open Platform for a Distributed Artificial Intelligence
+# COPDAI CORE
+Collaborative Open Platform for a Decentralized Artificial Intelligence

@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package org.copdai.core.model;
+
+/* Geolocation Hitory */
+message GeolocationHistory {
+	repeated Geolocation geolocations = 1;	// List of Geolocation
+	required double sentTime = 13; // Time the message was sent
+	required double startTime = 14; // History start time
+	required double endTime = 15; // History end time
+}
+
+/* Gelocation taked in specific time */
+message Geolocation {
+    required double lat = 1; // latitude
+    required double lng = 2; // longitude
+    optional double alt = 3; // altitude
+    optional double accuracy = 4; // accuracy in meter
+    optional double speed = 5; // speed in meter/second
+    required double time = 15; // Time whene the event occured
+}
